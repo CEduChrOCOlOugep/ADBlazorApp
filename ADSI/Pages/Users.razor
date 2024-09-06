@@ -1,0 +1,49 @@
+@page "/users"
+@inject ActiveDirectoryService ADService
+
+<h3>Active Directory Users</h3>
+
+@if (users == null)
+{
+    <p>Loading...</p>
+}
+else if (!users.Any())
+{
+    <p>No users found.</p>
+}
+else
+{
+    <table class="table table-striped">
+        <thead>
+        <tr>
+            <th>Name</th>
+            <th>Surname</th>
+            <th>Given Name</th>
+            <th>Email</th>
+            <th>sAMAccountName</th>
+        </tr>
+        </thead>
+        <tbody>
+        @foreach (var user in users)
+        {
+            <tr>
+                <td>@user.Name</td>
+                <td>@user.SN</td>
+                <td>@user.GivenName</td>
+                <td>@user.Mail</td>
+                <td>@user.SAMAccountName</td>
+            </tr>
+        }
+        </tbody>
+    </table>
+}
+
+@code {
+    private IEnumerable<User> users;
+
+    protected override async Task OnInitializedAsync()
+    {
+        users = await ADService.GetActiveDirectoryUsersAsync();
+    }
+
+}
