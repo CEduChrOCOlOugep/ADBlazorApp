@@ -1,0 +1,19 @@
+{
+  "iisSettings": {
+    "windowsAuthentication": true,
+    "anonymousAuthentication": false
+  },
+  "profiles": {
+    "IIS Express": {
+      "windowsAuthentication": true,
+      "anonymousAuthentication": false,
+      "commandName": "Project"
+    },
+    "ADBlazorApp": {
+      "commandName": "Project",
+      "dotnetRunMessages": true,
+      "windowsAuthentication": true,
+      "anonymousAuthentication": false
+    }
+  }
+}

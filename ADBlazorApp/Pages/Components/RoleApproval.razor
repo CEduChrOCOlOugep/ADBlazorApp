@@ -1,0 +1,47 @@
+@page "/role-approval"
+@using ADBlazorApp.Services
+@inject RoleRequestService RoleRequestService
+
+<h3>Pending Role Requests</h3>
+
+@if (pendingRequests == null || !pendingRequests.Any())
+{
+    <p>No pending requests.</p>
+}
+else
+{
+    <ul>
+        @foreach (var request in pendingRequests)
+        {
+            <li>
+                @request.UserName requested the role @request.RequestedRole at @request.RequestedAt
+                <button @onclick="() => ApproveRequest(request)">Approve</button>
+                <button @onclick="() => DenyRequest(request)">Deny</button>
+            </li>
+        }
+    </ul>
+}
+
+@code {
+    private List<Models.RoleRequest> pendingRequests = new();
+
+    protected override void OnInitialized()
+    {
+        pendingRequests = RoleRequestService.GetPendingRequests().ToList();
+    }
+
+    private void ApproveRequest(Models.RoleRequest request)
+    {
+        RoleRequestService.ApproveRequest(request);
+        pendingRequests.Remove(request);
+        Console.WriteLine($"Approved {request.RequestedRole} for {request.UserName}");
+    }
+
+    private void DenyRequest(Models.RoleRequest request)
+    {
+        RoleRequestService.DenyRequest(request);
+        pendingRequests.Remove(request);
+        Console.WriteLine($"Denied {request.RequestedRole} for {request.UserName}");
+    }
+
+}

@@ -1,0 +1,59 @@
+@page "/role-request"
+@using ADBlazorApp.Services
+@inject ActiveDirectoryService AdService
+@inject AuthenticationStateProvider AuthStateProvider
+@inject RoleRequestService RoleRequestService
+
+<h3>Role Request</h3>
+
+@if (rolesAvailable == null || userRoles == null)
+{
+    <p>Loading...</p>
+}
+else
+{
+    <h4>Your Current Roles</h4>
+    <ul>
+        @foreach (var role in userRoles)
+        {
+            <li>@role</li>
+        }
+    </ul>
+
+    <h4>Request Additional Roles</h4>
+    <ul>
+        @foreach (var role in rolesAvailable)
+        {
+            <li>
+                @role
+                <button @onclick="() => RequestRole(role)">Request</button>
+            </li>
+        }
+    </ul>
+}
+
+@code {
+    private List<string> rolesAvailable = new();
+    private List<string> userRoles = new();
+    private string userName;
+
+    protected override async Task OnInitializedAsync()
+    {
+        var authState = await AuthStateProvider.GetAuthenticationStateAsync();
+        var user = authState.User;
+
+        if (user.Identity != null && user.Identity.IsAuthenticated)
+        {
+            userName = user.Identity.Name;
+            userRoles = AdService.GetUserRoles(userName).ToList();
+            rolesAvailable = AdService.GetAllRoles().Where(role => !userRoles.Contains(role)).ToList();
+        }
+    }
+
+    private void RequestRole(string role)
+    {
+        RoleRequestService.AddRequest(userName, role);
+        Console.WriteLine($"User {userName} has requested the role: {role}");
+    }
+
+}
