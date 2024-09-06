@@ -2,6 +2,8 @@
 Microsoft Visual Studio Solution File, Format Version 12.00
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ADBlazorApp", "ADBlazorApp\ADBlazorApp.csproj", "{8FB6FC7A-0C70-4AB7-91B2-7241B3D7D34B}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ADSI", "ADSI\ADSI.csproj", "{496A3573-36A6-479C-9A6B-AC0A4B168367}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -12,5 +14,9 @@ Global
 		{8FB6FC7A-0C70-4AB7-91B2-7241B3D7D34B}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{8FB6FC7A-0C70-4AB7-91B2-7241B3D7D34B}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{8FB6FC7A-0C70-4AB7-91B2-7241B3D7D34B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{496A3573-36A6-479C-9A6B-AC0A4B168367}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{496A3573-36A6-479C-9A6B-AC0A4B168367}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{496A3573-36A6-479C-9A6B-AC0A4B168367}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{496A3573-36A6-479C-9A6B-AC0A4B168367}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal
