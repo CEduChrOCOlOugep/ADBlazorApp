@@ -1,8 +1,14 @@
 @page "/users"
 @inject ActiveDirectoryService ADService
+@* @attribute [Authorize(Policy = "AdminsOnly")] *@
 
 <h3>Active Directory Users</h3>
+@* <h3>Admin Section</h3> *@
 
+<!-- Only accessible to admins -->
+@* <p>Only admins can see this page.</p> *@
+
+<!-- Display users -->
 @if (users == null)
 {
     <p>Loading...</p>

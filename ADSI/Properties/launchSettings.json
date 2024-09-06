@@ -1,7 +1,7 @@
 {
   "iisSettings": {
-    "windowsAuthentication": false,
-    "anonymousAuthentication": true,
+    "windowsAuthentication": true,
+    "anonymousAuthentication": false,
     "iisExpress": {
       "applicationUrl": "http://localhost:58906",
       "sslPort": 44302
@@ -22,6 +22,14 @@
       "launchBrowser": true,
       "environmentVariables": {
         "ASPNETCORE_ENVIRONMENT": "Development"
+      }
+    }
+  },
+  "Authentication": {
+    "Schemes": {
+      "Windows": {
+        "DisplayName": "Windows",
+        "LoginPath": null
       }
     }
   }
